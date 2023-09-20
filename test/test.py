@@ -1,16 +1,15 @@
-import pytest
-from pytest_bdd import scenarios, given, when, then
+# test.py
 
-scenarios('Feature.feature')
+import unittest
+from main import add_numbers
 
-@given('I have the numbers 5 and 7')
-def input_numbers():
-    return [5, 7]
 
-@when('I add these numbers')
-def add_numbers(input_numbers):
-    return sum(input_numbers)
+class TestMainMethods(unittest.TestCase):
 
-@then('I get the result 12')
-def check_result(add_numbers):
-    assert add_numbers == 12
+    def test_add_numbers(self):
+        self.assertEqual(add_numbers(1, 2), 3)
+        self.assertEqual(add_numbers(-1, 1), 0)
+
+
+if __name__ == '__main__':
+    unittest.main()
